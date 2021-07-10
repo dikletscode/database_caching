@@ -1,4 +1,3 @@
-const axios = require("axios");
 const express = require("express");
 const Redis = require("./cache");
 
@@ -6,12 +5,22 @@ const sql = require("./lib/db");
 
 const app = express();
 /**
- * bismmillah
+ * bismmillah,
+ * --target flow-
+ *  ---------------?-------------------
  * Client => request => database
  * database => respon => client
  * Client => same_request => cache
  * if cache exist => respon_f_chache => client
  * else => respond_f_database =>client
+ * ------------------------------------
+ */
+/**
+ * promblem 1
+ * --what if a data changes in the database? --
+ *  ----------------------------------
+ * flushall,after client makes change,call clien flush
+ * ----------------------------------
  */
 
 app.get("/data", async (req, res) => {
